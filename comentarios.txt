@@ -1,0 +1,77 @@
+Comentarios importantes leer hasta el final :)
+
+Para que funcione el proyecto hicimos uso de un compilador llamado babel
+(Nos sirve para ejecutar comandos más recientes de Javascript) cuando se inicia el proyecto hicimos
+un script sencillo para instalar dependencias y meter el archivo .babelrc eso lo hace el mismo script
+
+déspues se modifica el package.json y se le agrega en la parte de scripts
+"start": "nodemon src/index.js --exec babel-node",
+
+Esto se ocupo para no tener que estar reiniciando el servidor a cada rato. Cuando guardas nodemon actualiza
+automaticamente el servidor y compila el nuevo código junto con babel-node
+
+Finalmente se ejecuta npm start y comienza la ejecución del servidor
+
+***************************************Inserciones:********************************
+mutation{
+	addAuthor(_id:1,
+    name: "J. K. Rowling"){
+    _id
+    name
+  }
+}
+
+mutation{
+	addAuthor(_id:2,
+    name: "J. R. R. Tolkien"){
+    _id
+    name
+  }
+}
+
+mutation{
+	addAuthor(_id:3,
+    name: "Brent Weeks"){
+    _id
+    name
+  }
+}
+
+******************Insertando en books*****************************
+
+mutation{
+	addBook(_id:1,
+    name: "Harry Potter and the Chamber of Secrets"
+    authorId: 1){
+    _id
+    name
+  }
+}
+
+mutation{
+	addBook(_id:2,
+    name: "Harry Potter and the Prisoner of Azkaban"
+    authorId: 1){
+    _id
+    name
+  }
+}
+
+mutation{
+	addBook(_id:3,
+    name: "Harry Potter and the Goblet of Fire"
+    authorId: 1){
+    _id
+    name
+  }
+}
+
+La otra opción es desde el shell conectandonos desde la terminal 
+mongo "mongodb+srv://cluster0.v8czf.mongodb.net/myFirstDatabase" --username crashvic
+db.books.insertMany([
+  { _id: 4, name: 'The Fellowship of the Ring', authorId: 2 },
+	{ _id: 5, name: 'The Two Towers', authorId: 2 },
+	{ _id: 6, name: 'The Return of the King', authorId: 2 },
+	{ _id: 7, name: 'The Way of Shadows', authorId: 3 },
+	{ _id: 8, name: 'Beyond the Shadows', authorId: 3 }
+])
